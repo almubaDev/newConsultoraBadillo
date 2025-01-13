@@ -12,7 +12,7 @@ const Services = () => {
         'Confección y presentación de los impuestos mensuales, F29 y F50',
         'Preparación de informes financieros periódicos, estado de flujos, Balance y Estado de Resultados',
         'Preparación y presentación de Declaraciones Juradas Operación Renta',
-        'Presentación de las Declaraciones de Renta de la empresa y socios',
+        'Confección y presentación F22 - declaración de renta empresa, socios y personas naturales',
         'Término de giro'
       ]
     },
