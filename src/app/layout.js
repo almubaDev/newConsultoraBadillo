@@ -22,17 +22,24 @@ export const metadata = {
  openGraph: {
    title: 'Consultora Badillo',
    description: 'Soluciones contables y tributarias integrales para tu empresa',
+   type: 'website',
+   url: 'https://consultorabadillo.com',
    images: [{
-     url: 'https://www.consultorabadillo.com/logo.png',
+     url: 'https://consultorabadillo.com/logo.png',
      width: 800,
      height: 600,
      alt: 'Consultora Badillo Logo',
+     type: 'image/png',
    }],
+   siteName: 'Consultora Badillo',
  },
  other: {
-   'og:image': 'https://www.consultorabadillo.com/logo.png',
+   'og:image': 'https://consultorabadillo.com/logo.png',
    'og:image:width': '800',
    'og:image:height': '600',
+   'og:type': 'website',
+   'og:url': 'https://consultorabadillo.com',
+   'og:site_name': 'Consultora Badillo',
  }
 };
 
