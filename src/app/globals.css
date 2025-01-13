@@ -19,3 +19,34 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Estilos existentes de tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos para el carrusel de clientes */
+.client-carousel .slick-track {
+  display: flex !important;
+}
+
+.client-carousel .slick-slide {
+  height: inherit !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.client-carousel .slick-slide > div {
+  width: 100%;
+}
+
+/* Estilos para los puntos del carrusel */
+.client-carousel .slick-dots li button:before {
+  font-size: 12px;
+  color: #1a237e; /* color primary */
+}
+
+.client-carousel .slick-dots li.slick-active button:before {
+  color: #1a237e; /* color primary */
+}
