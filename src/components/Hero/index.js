@@ -11,8 +11,8 @@ const Hero = () => {
           <div className="flex-1 max-w-2xl">
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
               Consultora Badillo
-              
             </h1>
+            <h4 className=" text-primary font-bold mb-6">Soluciones contables y tributarias integrales para tu empresa</h4>
            
             <p className="text-gray-600 mb-8">
               Ofrecemos servicios profesionales especializados en contabilidad, 
