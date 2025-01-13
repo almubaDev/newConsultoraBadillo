@@ -50,6 +50,8 @@ const Hero = () => {
               </div>
               <div className="text-center">
                 <h3 className="text-lg font-semibold text-primary">Tamara Badillo</h3>
+                <h6 className="text-sm font-semibold text-primary">Mg. en Dirección Tributaria</h6>
+                <h6 className="text-sm font-semibold text-primary">Contador Auditor</h6>
                 <p className="text-sm text-gray-600">CEO</p>
               </div>
             </div>
@@ -66,6 +68,7 @@ const Hero = () => {
               </div>
               <div className="text-center">
                 <h3 className="text-lg font-semibold text-primary">Ellen Barraza</h3>
+                <h6 className="text-sm font-semibold text-primary">Técnico en Contabilidad</h6>
                 <p className="text-sm text-gray-600">Asistente Administrativa Contable</p>
               </div>
             </div>

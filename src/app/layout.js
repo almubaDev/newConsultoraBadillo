@@ -81,8 +81,6 @@ export default function RootLayout({ children }) {
         <meta property="whatsapp:image" content="https://consultorabadillo.com/logo.png" />
         {/* Links para favicon y manifest */}
         <link rel="canonical" href="https://consultorabadillo.com" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
