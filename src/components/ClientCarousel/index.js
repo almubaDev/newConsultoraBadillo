@@ -159,9 +159,9 @@ const ClientCarousel = () => {
                     className="object-contain max-h-[100px]"
                   />
                 </div>
-                <p className="text-xs text-gray-600 font-medium">
+                {/* <p className="text-xs text-gray-600 font-medium">
                   {client.name}
-                </p>
+                </p> */}
               </div>
             </a>
           </div>
