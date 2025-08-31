@@ -24,7 +24,6 @@ const Services = () => {
         'Planificación y optimización tributaria de acuerdo a la Ley',
         'Asesoría y gestión directa en proceso de fiscalización del SII',
         'Estudio de regímenes tributarios adecuado según necesidades y estructura de cada cliente',
-        'Asesorías normas anti evasión y elusión por ejecución de actos jurídicos',
         'Diagnóstico situación tributaria actual de la empresa',
         'Revisión de impuestos mensuales',
         'Revisión de impuestos anuales',
