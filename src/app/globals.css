@@ -20,10 +20,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Estilos existentes de tailwind */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Transiciones globales suaves */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
 
 /* Estilos para el carrusel de clientes */
 .client-carousel .slick-track {
@@ -49,4 +56,38 @@ body {
 
 .client-carousel .slick-dots li.slick-active button:before {
   color: #1a237e; /* color primary */
+}
+
+/* Animación de aparición progresiva para servicios */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Animación de scroll infinito para carrusel de clientes */
+@keyframes scroll-seamless {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 17)); /* Ancho de un logo (250px) x cantidad de logos (17) */
+  }
+}
+
+.animate-scroll-seamless {
+  animation: scroll-seamless 45s linear infinite;
+}
+
+.animate-scroll-seamless:hover {
+  animation-play-state: paused;
 }

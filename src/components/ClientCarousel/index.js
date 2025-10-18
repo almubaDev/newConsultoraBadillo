@@ -1,52 +1,9 @@
 "use client";
 import React from "react";
-import Slider from "react-slick";
 import Image from "next/image";
 
 const ClientCarousel = () => {
-    const settings = {
-      dots: false, // Quitamos los puntos
-      infinite: true,
-      speed: 300, // Reducimos la velocidad de transición (era 500)
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000, // Reducimos el tiempo entre slides (era 3000)
-      pauseOnHover: true,
-      responsive: [
-        {
-          breakpoint: 1280,
-          settings: {
-            slidesToShow: 4,
-          },
-        },
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-          },
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-          },
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-          },
-        },
-      ],
-    };
-
   const clients = [
-    {
-      name: "MADISON",
-      logo: "/clients/MADISON.avif",
-      url: "https://madisonyco.cl"
-    },
     {
       name: "FRANCISCA GOYCOLEA ESTUDIO",
       logo: "/clients/FCA COYCOLEA.jpg",
@@ -134,39 +91,44 @@ const ClientCarousel = () => {
     }
   ];
 
- 
   return (
-    <div id='clientes' className="client-carousel py-16 px-16">
-      <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+    <div id='clientes' className="py-12 md:py-16 bg-white overflow-hidden">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary text-center mb-8 md:mb-12 px-4">
         Empresas que Confían en Nosotros
       </h2>
-      <Slider {...settings}>
-        {clients.map((client, index) => (
-          <div key={index} className="client-slide px-4">
-            <a 
-              href={client.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="block text-center hover:opacity-80 transition-opacity duration-300"
-            >
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="h-[100px] flex items-center justify-center mb-4">
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    width={200}
-                    height={100}
-                    className="object-contain max-h-[100px]"
-                  />
+
+      <div className="relative">
+        {/* Degradados en los bordes para efecto de fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+        {/* Contenedor del carrusel infinito */}
+        <div className="flex animate-scroll-seamless">
+          {/* Repetimos los logos 3 veces para un loop perfecto */}
+          {[...clients, ...clients, ...clients].map((client, index) => (
+            <div key={index} className="flex-shrink-0 px-4 md:px-6" style={{ width: '250px' }}>
+              <a
+                href={client.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+              >
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 group-hover:scale-105 border border-gray-100">
+                  <div className="h-[100px] flex items-center justify-center">
+                    <Image
+                      src={client.logo}
+                      alt={client.name}
+                      width={200}
+                      height={100}
+                      className="object-contain max-h-[100px] w-auto transition-all duration-300 group-hover:brightness-110"
+                    />
+                  </div>
                 </div>
-                {/* <p className="text-xs text-gray-600 font-medium">
-                  {client.name}
-                </p> */}
-              </div>
-            </a>
-          </div>
-        ))}
-      </Slider>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

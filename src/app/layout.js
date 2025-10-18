@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google'
+import { plusJakarta } from './fonts'
 import './globals.css'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -82,7 +83,7 @@ export default function RootLayout({ children }) {
         {/* Links para favicon y manifest */}
         <link rel="canonical" href="https://consultorabadillo.com" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} ${plusJakarta.variable}`}>{children}</body>
     </html>
   )
 }
