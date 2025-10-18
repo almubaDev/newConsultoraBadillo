@@ -2,33 +2,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 
 const Hero = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
-    },
-  };
-
   const teamMembers = [
     {
       name: 'Tamara Badillo',
@@ -55,26 +30,30 @@ const Hero = () => {
     }
   };
 
+  const floatingVariants = {
+    animate: {
+      y: [0, -15, 0],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
   return (
     <section
       id="inicio"
       className="relative bg-gradient-to-br from-gray-50 via-white to-gray-50 min-h-screen flex items-center py-20 md:py-24"
     >
       <div className="w-full max-w-[1400px] mx-auto px-4 md:px-6 h-full flex items-center">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          className="flex flex-col gap-8 md:gap-16 xl:gap-24 w-full"
-        >
-          {/* FILA SUPERIOR: Logo grande | Título + Texto + Botones */}
+        <div className="flex flex-col gap-8 md:gap-16 xl:gap-24 w-full">
+          {/* FILA SUPERIOR: Logo grande | Título + Texto + Botones - SIN EFECTOS */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 xl:gap-16 items-center">
-            {/* COLUMNA IZQUIERDA: Logo grande CENTRADO */}
+            {/* COLUMNA IZQUIERDA: Logo grande CENTRADO con movimiento flotante */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              variants={floatingVariants}
+              animate="animate"
               className="flex justify-center items-center"
             >
               <Image
@@ -86,65 +65,41 @@ const Hero = () => {
               />
             </motion.div>
 
-            {/* COLUMNA DERECHA: Título + Texto + Botones */}
+            {/* COLUMNA DERECHA: Título + Texto + Botones - SIN EFECTOS */}
             <div className="space-y-4 md:space-y-6 text-center xl:text-left">
               {/* Título */}
-              <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl xl:text-[56px] xl:leading-[1.1] font-jakarta font-bold text-primary"
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
+              <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-[56px] xl:leading-[1.1] font-jakarta font-bold text-primary">
                 Consultora Badillo
-              </motion.h1>
+              </h1>
 
               {/* Texto */}
-              <motion.p
-                className="text-base md:text-lg xl:text-xl text-gray-600 leading-[150%] max-w-[680px] mx-auto xl:mx-0 px-4 md:px-0"
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
+              <p className="text-base md:text-lg xl:text-xl text-gray-600 leading-[150%] max-w-[680px] mx-auto xl:mx-0 px-4 md:px-0">
                 Soluciones contables y tributarias integrales para tu empresa
-              </motion.p>
+              </p>
 
               {/* Botones */}
-              <motion.div
-                className="flex flex-col sm:flex-row gap-4 justify-center xl:justify-start"
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                <motion.a
+              <div className="flex flex-col sm:flex-row gap-4 justify-center xl:justify-start">
+                <a
                   href="#contacto"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
                   className="bg-accent-button text-white h-[50px] px-8 rounded-[14px] hover:bg-accent-button-hover shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center font-medium text-base w-full sm:w-[220px]"
                 >
                   Contáctanos
-                </motion.a>
-                <motion.a
+                </a>
+                <a
                   href="#servicios"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
                   className="border-2 border-primary text-primary h-[50px] px-8 rounded-[14px] hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center font-medium text-base w-full sm:w-[220px]"
                 >
                   Nuestros Servicios
-                </motion.a>
-              </motion.div>
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* FILA INFERIOR: Fotos centradas */}
+          {/* FILA INFERIOR: Fotos centradas - CON EFECTOS LIMPIOS */}
           <div className="flex flex-col gap-6 md:gap-8 justify-center items-center">
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full px-4 sm:px-0">
               {/* Foto Tamara */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="relative flex items-center w-full sm:w-auto"
-              >
+              <div className="relative flex items-center w-full sm:w-auto animate-fadeInUp">
                 <div
                   className="relative rounded-full overflow-hidden shadow-lg flex-shrink-0 border-4 border-white z-10 w-[120px] h-[120px] md:w-[160px] md:h-[160px]"
                 >
@@ -171,15 +126,10 @@ const Hero = () => {
                     <p className="text-[10px] md:text-xs text-gray-600 mt-1">{teamMembers[0].role}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Foto Ellen */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="relative flex items-center flex-row-reverse w-full sm:w-auto"
-              >
+              <div className="relative flex items-center flex-row-reverse w-full sm:w-auto animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
                 <div
                   className="relative rounded-full overflow-hidden shadow-lg flex-shrink-0 border-4 border-white z-10 w-[120px] h-[120px] md:w-[160px] md:h-[160px]"
                 >
@@ -205,23 +155,21 @@ const Hero = () => {
                     <p className="text-[10px] md:text-xs text-gray-600 mt-1">{teamMembers[1].role}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
-            {/* Texto adicional debajo de las fotos */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="text-sm md:text-base xl:text-lg text-gray-600 text-center max-w-[900px] italic px-6 md:px-0 md:whitespace-nowrap"
+            {/* Texto adicional debajo de las fotos - CON EFECTO LIMPIO */}
+            <p
+              className="text-sm md:text-base xl:text-lg text-gray-600 text-center max-w-[900px] italic px-6 md:px-0 md:whitespace-nowrap animate-fadeInUp"
+              style={{ animationDelay: '0.4s' }}
             >
               <span className="text-2xl md:text-3xl font-bold">"</span>Ayudando a nuestros clientes a optimizar sus procesos y cumplir con sus obligaciones fiscales.<span className="text-2xl md:text-3xl font-bold">"</span>
-            </motion.p>
+            </p>
           </div>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Scroll cue - centrado al pie */}
+      {/* Scroll cue - centrado al pie con animación */}
       <motion.div
         className="hidden xl:block absolute bottom-6 left-1/2 transform -translate-x-1/2 opacity-60"
         variants={chevronVariants}

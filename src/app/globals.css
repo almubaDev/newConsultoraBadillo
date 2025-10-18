@@ -91,3 +91,20 @@ html {
 .animate-scroll-seamless:hover {
   animation-play-state: paused;
 }
+
+/* Animación de aparición limpia para tarjetas y cita en Hero */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
