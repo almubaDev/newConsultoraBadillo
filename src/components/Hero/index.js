@@ -17,6 +17,12 @@ const Hero = () => {
       titles: ['Técnico en Contabilidad'],
       role: 'Asistente Administrativa Contable',
     },
+    {
+      name: 'Tania Saavedra',
+      image: '/tania.jpeg',
+      titles: ['Técnico en Contabilidad', 'Cursando Contador Auditor'],
+      role: 'Analista Contable',
+    },
   ];
 
   const chevronVariants = {
@@ -97,65 +103,45 @@ const Hero = () => {
 
           {/* FILA INFERIOR: Fotos centradas - CON EFECTOS LIMPIOS */}
           <div className="flex flex-col gap-6 md:gap-8 justify-center items-center">
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full px-4 sm:px-0">
-              {/* Foto Tamara */}
-              <div className="relative flex items-center w-full sm:w-auto animate-fadeInUp">
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 justify-center items-center w-full px-4 sm:px-0">
+              {/* Renderizar todas las fotos con el mismo estilo: foto izquierda, texto derecha */}
+              {teamMembers.map((member, index) => (
                 <div
-                  className="relative rounded-full overflow-hidden shadow-lg flex-shrink-0 border-4 border-white z-10 w-[120px] h-[120px] md:w-[160px] md:h-[160px]"
+                  key={member.name}
+                  className="relative flex items-center w-full lg:w-auto animate-fadeInUp"
+                  style={{ animationDelay: `${index * 0.15}s` }}
                 >
-                  <Image
-                    src={teamMembers[0].image}
-                    alt={teamMembers[0].name}
-                    fill
-                    className="object-cover"
-                    style={{ objectPosition: '50% 20%' }}
-                    priority
-                    sizes="(max-width: 768px) 120px, 160px"
-                  />
-                </div>
-                <div className="bg-white rounded-r-[18px] shadow-md hover:shadow-lg transition-all duration-300 pl-16 md:pl-20 pr-4 md:pr-6 py-4 md:py-5 -ml-12 md:-ml-16 w-full sm:w-[350px] h-[110px] md:h-[150px] flex items-center">
-                  <div className="flex-1">
-                    <h3 className="text-sm md:text-base font-bold text-primary mb-1">
-                      {teamMembers[0].name}
-                    </h3>
-                    {teamMembers[0].titles.map((title, idx) => (
-                      <p key={idx} className="text-[10px] md:text-xs font-semibold text-primary/80 leading-tight">
-                        {title}
-                      </p>
-                    ))}
-                    <p className="text-[10px] md:text-xs text-gray-600 mt-1">{teamMembers[0].role}</p>
+                  <div
+                    className="relative rounded-full overflow-hidden shadow-lg flex-shrink-0 border-4 border-white z-10 w-[120px] h-[120px] md:w-[160px] md:h-[160px]"
+                  >
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      style={{
+                        objectPosition: index === 2 ? '50% 0%' : '50% 20%',
+                        transform: index === 2 ? 'scale(1.8)' : 'scale(1)'
+                      }}
+                      priority={index === 0}
+                      sizes="(max-width: 768px) 120px, 160px"
+                    />
+                  </div>
+                  <div className="bg-white rounded-r-[18px] shadow-md hover:shadow-lg transition-all duration-300 pl-16 md:pl-20 pr-4 md:pr-6 py-4 md:py-5 -ml-12 md:-ml-16 w-full lg:w-[300px] xl:w-[320px] h-[110px] md:h-[150px] flex items-center">
+                    <div className="flex-1">
+                      <h3 className="text-sm md:text-base font-bold text-primary mb-1">
+                        {member.name}
+                      </h3>
+                      {member.titles.map((title, idx) => (
+                        <p key={idx} className="text-[10px] md:text-xs font-semibold text-primary/80 leading-tight">
+                          {title}
+                        </p>
+                      ))}
+                      <p className="text-[10px] md:text-xs text-gray-600 mt-1">{member.role}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Foto Ellen */}
-              <div className="relative flex items-center flex-row-reverse w-full sm:w-auto animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
-                <div
-                  className="relative rounded-full overflow-hidden shadow-lg flex-shrink-0 border-4 border-white z-10 w-[120px] h-[120px] md:w-[160px] md:h-[160px]"
-                >
-                  <Image
-                    src={teamMembers[1].image}
-                    alt={teamMembers[1].name}
-                    fill
-                    className="object-cover"
-                    style={{ objectPosition: '50% 20%' }}
-                    sizes="(max-width: 768px) 120px, 160px"
-                  />
-                </div>
-                <div className="bg-white rounded-l-[18px] shadow-md hover:shadow-lg transition-all duration-300 pr-16 md:pr-20 pl-2 md:pl-3 py-4 md:py-5 -mr-12 md:-mr-16 w-full sm:w-[350px] h-[110px] md:h-[150px] flex items-center">
-                  <div className="flex-1 pl-16 md:pl-20 text-right">
-                    <h3 className="text-sm md:text-base font-bold text-primary mb-1">
-                      {teamMembers[1].name}
-                    </h3>
-                    {teamMembers[1].titles.map((title, idx) => (
-                      <p key={idx} className="text-[10px] md:text-xs font-semibold text-primary/80 leading-tight">
-                        {title}
-                      </p>
-                    ))}
-                    <p className="text-[10px] md:text-xs text-gray-600 mt-1">{teamMembers[1].role}</p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Texto adicional debajo de las fotos - CON EFECTO LIMPIO */}
